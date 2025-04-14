@@ -15,9 +15,13 @@ class EditNotes extends StatelessWidget {
             children: [
               CustomAppBar(title: "Edit Notes", icon: Icons.done),
               SizedBox(height: 25,),
-              CustomTextField(hintText: "title"),
+              CustomTextField(hintText: "title",onSave: (p0) {
+
+              },),
               SizedBox(height: 25,),
-              CustomTextField(hintText: "subTitle",maxLine: 5,),
+              CustomTextField(hintText: "subTitle",maxLine: 5,onSave: (p0) {
+
+              },),
             ],
           ),
         ),
