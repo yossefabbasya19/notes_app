@@ -9,7 +9,7 @@ part 'add_notes_state.dart';
 
 class AddNotesCubit extends Cubit<AddNotesState> {
   AddNotesCubit() : super(AddNotesInitial());
-  void addNotes (NoteModel note)async {
+  Future<void> addNotes (NoteModel note)async {
     emit(AddNotesLoading());
     await Future.delayed(Duration(seconds: 1));
     try{
