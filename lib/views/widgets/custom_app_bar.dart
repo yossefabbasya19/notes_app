@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
-    required this.onPressed,
+    this.onPressed,
     required this.title,
     required this.icon,
   });
 
   final String title;
   final IconData icon;
-  final void Function() onPressed;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {

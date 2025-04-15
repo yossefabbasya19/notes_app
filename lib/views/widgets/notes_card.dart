@@ -79,7 +79,7 @@ class NotesCard extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    "may 2,2025",
+                    noteModel.date,
                     style: GoogleFonts.poppins(
                       color: Colors.black.withValues(alpha: 0.6),
                       fontSize: 16,
