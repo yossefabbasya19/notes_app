@@ -32,6 +32,7 @@ class _NotesCardListViewState extends State<NotesCardListView> {
                   noteModel: notes[index],
                   title: notes[index].title,
                   subTitle: notes[index].subtitle,
+                  noteKey: notes[index].key,
                 ),
           ),
         );
