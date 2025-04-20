@@ -10,16 +10,11 @@ import 'package:notes_app/views/edit_notes.dart';
 class NotesCard extends StatelessWidget {
   const NotesCard({
     super.key,
-    required this.title,
-    required this.subTitle,
-    required this.noteModel,
-    required this.noteKey,
+     required this.noteModel,
+
   });
 
-  final String title;
   final NoteModel noteModel;
-  final String subTitle;
-  final int noteKey;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +31,7 @@ class NotesCard extends StatelessWidget {
         margin: EdgeInsets.only(top: 8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: Color(0xfff4da7f),
+          color: Color(noteModel.color),
         ),
         child: Padding(
           padding: const EdgeInsets.all(16),
@@ -47,7 +42,7 @@ class NotesCard extends StatelessWidget {
                 title: Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: Text(
-                    title,
+                    noteModel.title,
                     style: GoogleFonts.poppins(
                       color: Colors.black,
                       fontSize: 24,
@@ -58,7 +53,7 @@ class NotesCard extends StatelessWidget {
                 subtitle: Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Text(
-                    subTitle,
+                    noteModel.subtitle,
                     style: GoogleFonts.poppins(
                       color: Colors.black.withValues(alpha: 0.6),
                       fontSize: 16,
@@ -79,7 +74,7 @@ class NotesCard extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    "may 2,2025",
+                    noteModel.date,
                     style: GoogleFonts.poppins(
                       color: Colors.black.withValues(alpha: 0.6),
                       fontSize: 16,

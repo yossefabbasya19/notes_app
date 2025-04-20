@@ -30,9 +30,6 @@ class _NotesCardListViewState extends State<NotesCardListView> {
             itemBuilder:
                 (context, index) => NotesCard(
                   noteModel: notes[index],
-                  title: notes[index].title,
-                  subTitle: notes[index].subtitle,
-                  noteKey: notes[index].key,
                 ),
           ),
         );
