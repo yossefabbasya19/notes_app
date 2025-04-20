@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:notes_app/cubit/add_notes/add_notes_cubit.dart';
 import 'package:notes_app/cubit/fetch_data/fetch_data_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
+import 'package:notes_app/views/widgets/colors_selector/color_seletor.dart';
 import 'package:notes_app/views/widgets/custom_text_field.dart';
 
 class CustomBottomSheet extends StatefulWidget {
@@ -24,12 +25,18 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
     return BlocProvider(
       create: (context) => AddNotesCubit(),
       child: Container(
-        padding: EdgeInsets.only(top: 16,left: 16,right: 16,bottom: MediaQuery.of(context).viewInsets.bottom),
+        padding: EdgeInsets.only(
+          top: 16,
+          left: 16,
+          right: 16,
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
         child: SingleChildScrollView(
           child: Form(
             key: formKey,
             child: Column(
               children: [
+                ColorsListView(),
                 SizedBox(height: 25),
                 CustomTextField(
                   hintText: "title",
@@ -51,6 +58,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                     if (state is AddNotesFailure) {
                       print(state.errMassage);
                     } else if (state is AddNotesSuccess) {
+                      BlocProvider.of<FetchDataCubit>(context).fetchData();
                       Navigator.pop(context);
                     }
                   },
@@ -68,7 +76,7 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                             ),
                           ),
                         ),
-                        onPressed: () async{
+                        onPressed: () async {
                           if (formKey.currentState!.validate()) {
                             formKey.currentState!.save();
                             NoteModel note = NoteModel(
@@ -77,10 +85,9 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
                               date: DateTime.now().toString(),
                               subtitle: subTitle!,
                             );
-                           await BlocProvider.of<AddNotesCubit>(
+                            await BlocProvider.of<AddNotesCubit>(
                               context,
                             ).addNotes(note);
-                            BlocProvider.of<FetchDataCubit>(context).fetchData();
                           }
                         },
                         child:
